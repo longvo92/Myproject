@@ -31,7 +31,7 @@
 .				- Using class.
 .				- Split apllication and logic.
 .				- Xu ly loi dau vao
-.			Last modified:23/2/2024
+.			Last modified:01/03/2024
 .			
 .			To do list:
 .				- control input.
