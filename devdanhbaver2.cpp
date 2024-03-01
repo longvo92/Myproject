@@ -30,6 +30,7 @@
 .			Update 1/3:
 .				- Using class.
 .				- Split apllication and logic.
+.				- Xu ly loi dau vao
 .			Last modified:23/2/2024
 .			
 .			To do list:
@@ -43,6 +44,7 @@
 #include <fstream>
 #include <sstream>
 #include <utility>
+#include <algorithm>
 #include <set>
 
 using namespace std;
@@ -108,6 +110,9 @@ class Xulykytu{
 				}
 			}
 		}
+		bool isNumber(const string &s) {
+   	 		return !s.empty() && find_if(s.begin(), s.end(), [](char c) { return !isdigit(c); }) == s.end();
+		}
 };	
 
 class Lienlac:public Xulykytu{
@@ -124,15 +129,12 @@ class Lienlac:public Xulykytu{
 			cin >> dienthoai;
 			Danhba.insert(make_pair(hoten,dienthoai));		
 		}
-		void Thongtin(){
-			for (auto it = Danhba.begin();it!=Danhba.end();it++){
-				cout<< it->first << " " << it->second <<endl;
-			}
-		}
 		bool Hienthi(){
 			if (!Danhba.empty()){
 					cout << "Danh sach lien he:"<<endl << "Ten  SDT"<<endl;
-					Thongtin();
+					for (auto it = Danhba.begin();it!=Danhba.end();it++){
+						cout<< it->first << " " << it->second <<endl;
+					}
 					return true;
 				}
 			else return false;
@@ -228,72 +230,91 @@ class Lienlac:public Xulykytu{
 		}
 		bool Xuatfile(){
 			string txt;
-				cin.ignore();
-				cout << "Nhap ten file: ";
-				getline(cin,txt);
-				ofstream out(txt.c_str());
-				
-				set<pair<string,string> >::iterator it = Danhba.begin();
-				for (it; it!=Danhba.end(); it++){
-					string a = it->first;
-					ghepchu(a);
-					if (out.is_open()){
-						out << a <<" "<< it->second << " ";
-					}
-					else {
-					cout << "Khong the mo file txt" <<endl;
-					}
-
-				}
-				out.close();
-				cout << "Luu du lieu thanh cong" <<endl; 
-		}
-		bool Mofile(){
-				string txt;
-				string str;
-				string word;
-				vector<string> words;
-				cin.ignore();
-				cout << "Nhap ten file: ";
-				getline(cin,txt);
-				ifstream in(txt.c_str());
-				if (in){
-					getline(in,str);
-					in.close();
+			cin.ignore();
+			cout << "Nhap ten file: ";
+			getline(cin,txt);
+			ofstream out(txt.c_str());			
+			set<pair<string,string> >::iterator it = Danhba.begin();
+			for (it; it!=Danhba.end(); it++){
+				string a = it->first;
+				ghepchu(a);
+				if (out.is_open()){
+					out << a <<" "<< it->second << " ";
 				}
 				else {
-					cout << "Kiem tra lai ten file" <<endl;
+					cout << "Khong the mo file txt" <<endl;
 				}
-				istringstream iss(str);
-				while (iss >> word){
-					words.push_back(word);
-				}
+			}
+			out.close();
+			cout << "Luu du lieu thanh cong" <<endl; 
+		}
+		bool Mofile(){
+			string txt;
+			string str;
+			string word;
+			vector<string> words;
+			cin.ignore();
+			cout << "Nhap ten file: ";
+			getline(cin,txt);
+			ifstream in(txt.c_str());
+			if (in){
+				getline(in,str);
+				in.close();
+			}
+			else {
+				cout << "Kiem tra lai ten file" <<endl;
+				return false;
+			}
+			istringstream iss(str);
+			while (iss >> word){
+				words.push_back(word);
+			}	
+			if (!word.empty()){
 				for (int i=0; i< words.size();i+=2){
-				string hoten;
-				string dienthoai;
+					string hoten;
+					string dienthoai;
 					hoten = words[i];
 					dienthoai = words[i+1];
 					tachchu(hoten);
-					Danhba.insert(make_pair(hoten,dienthoai));		
+					Danhba.insert(make_pair(hoten,dienthoai));	
 				}
-				cout << "Thanh cong"<<endl;
+			}
+			else{
+			 	cout << "Khong thanh cong, file trong!" <<endl;
+				return false; 
+			}
+				
 		}
 };
+
 
 class Giaodien:protected Lienlac{
 	private:
 		int n;
 	public:
+		void protectn() {
+        	string input;
+        	cin >> input;
+        	if (!Xulykytu::isNumber(input) || stoi(input) < 1 || stoi(input) > 256) {
+            	cerr << "Loi: Gia tri vao khong hop le." << endl;
+            	cin.clear();
+            	cin.ignore();
+        	}
+			else {
+            	n = stoi(input);
+        	}
+    	}
 		void setup(){
 			cout << "Chao mung den voi ung dung quan ly danh ba!" <<endl;
 			cout << "Cac chuc nang bao gom:"<<endl;
 			cout << "1/ Them lien lac"<<endl<<"2/ Hien thi danh sach" <<endl<<"3/ Tim kiem"<< endl << "4/ Xoa lien lac"<< endl<< "5/ Cap nhat thong tin" <<endl;
 			cout << "6/ Xuat du lieu ra file" <<endl << "7/ Mo du lieu tu file"<<endl <<"8/ Thoat chuong trinh"<<endl;
 			cout << "Vui long chon mot chuc nang de bat dau: ";
-			cin >> n;
+			protectn();
 		}
 		void getif(){
-			cout << "Chon chuc nang tiep theo :"; cin >> n;	
+			cout << "Chon chuc nang tiep theo :"; 
+			protectn();	
 		}
 		void error1(){
 			cerr << "Danh ba hien dang trong vui long them lien he:" << endl;
@@ -327,15 +348,20 @@ class Giaodien:protected Lienlac{
 					if (Lienlac::Xuatfile()) getif();
 				}
 				else if (n==Mo_file){
-					if(Lienlac::Mofile()) getif();
+					if(Lienlac::Mofile()) {
+						cout << "Nhap du lieu thanh cong!"<<endl;
+						Lienlac::Hienthi();
+						getif();					
+					}
+					else getif();
 				}		
 				else if (n==Thoat){
 					cout << "Cam on ban da su dung ung dung danh ba dien thoai" <<endl <<"Ket thuc chuong trinh";
 					break;
 				}
 				else {
-					cout << "Vui long nhap dung yeu cau: ";
-					cin >> n;
+					cout << "Vui long nhap dung yeu cau: "<<endl;
+					protectn();
 				};
 			}
 		}
