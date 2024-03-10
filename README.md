@@ -16,10 +16,10 @@ Chương trình Quản lý Danh bạ Điện thoại là ứng dụng console gi
 - Thoát: Kết thúc chương trình.
 
 ## Hướng Dẫn Sử Dụng:
-
-Chạy chương trình và chọn chức năng từ menu.
-Thực hiện các thao tác như thêm, hiển thị, tìm kiếm, xóa, cập nhật liên lạc.
-Lưu và nạp dữ liệu từ file khi cần.
+- Tải file danhbaver2.exe.
+- Chạy chương trình và chọn chức năng từ menu.
+- Thực hiện các thao tác như thêm, hiển thị, tìm kiếm, xóa, cập nhật liên lạc.
+- Lưu và nạp dữ liệu từ file khi cần.
 
 ## Ngày Cập Nhật:
 
