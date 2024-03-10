@@ -1,43 +1,4 @@
-//             CHUONG TRINH QUAN LY DANH BA DIEN THOAI
-// .															Long Vo
-// --------------------------------------------------------------------
-// .	         Cac chuc nang :
-// .		   		1/ Nhap thong tin lien lac bao gom ho ten va sdt.
-// .				2/ Quan ly danh sach cac lien lac.
-// .				3/ Tim kiem dah sach cac lien lac.
-// .				4/ Xoa lien lac.
-// .				5/ Cap nhat sdt lien lac.
-// .				6/ Nhap, xuat du lieu tu file txt.
-// --------------------------------------------------------------------
-// .			Update 18/2:
-// .				- Hoan thanh khung chuong trinh.
-// .				- Hoan thanh cac chuc nang.
-// .			Update 19/2:
-// .				- Fix loi khi danh ba dang trong (debug error1)
-// .				- Chuan hoa ky tu (define function "ChuanHoakytu")
-// .			Update 20/2:
-// .				- Sap xep lien lac theo ho ten (using algorithm libary soft method, define function "Sapxep")
-// .				- Them lua chon cap nhat nhieu so dien thoai 1 luc dua theo ky tu nhap vao
-// .				- Tim kiem, xoa va cap nhat lien lac thong minh
-// .			Update 21/2:
-// .				- Nhap, xuat du lieu tu file txt (using fstream and sstream libary to control data)
-// .			Update 22/2:
-// .				- Toi uu code, giam do phuc tap (Using set,pair)
-// .			Update 23/2:
-// .				- Xu ly ky tu nhap xuat, cai thien giao dien nguoi dung.
-// .				- Debug loi khien vong lap for vao danhba.end()
-// .				- using const value.
-// .			Update 1/3:
-// .				- Using class.
-// .				- Split apllication and logic.
-// .				- Xu ly loi dau vao
-// .			Last modified:01/03/2024
-// .			
-// .			To do list:
-// .				- control input.
-// .				- security control when import file and type data
-// .				- return button.
-// -------------------------------------------------------------------
+
 #include <iostream>
 #include <string>
 #include <vector>
@@ -122,9 +83,19 @@ class Lienlac:public Xulykytu{
 		void themlienlac(){
 			string hoten,dienthoai;
 			cin.ignore();
-			cout << "Nhap ten:" ;
+			cout << "Nhap ten: ";
 			getline(cin,hoten);
 			ChuanHoakytu(hoten);
+			
+			for(auto it = Danhba.begin(); it != Danhba.end();it++){
+				string hotendanhba = it->first;
+				if (kiemtrakytu(hoten,hotendanhba)){
+					cout << "Nguoi dung da ton tai"<<endl;
+					cout << "Nhap ten: ";
+					getline(cin,hoten);
+					ChuanHoakytu(hoten);
+				}
+			}
 			cout<< "Nhap SDT:";
 			cin >> dienthoai;
 			Danhba.insert(make_pair(hoten,dienthoai));		
@@ -288,6 +259,22 @@ class Lienlac:public Xulykytu{
 		void insert(string hoten, string dienthoai){
 			Danhba.insert(make_pair(hoten,dienthoai));	
 		}
+		void thoat(string txt){
+			ofstream out(txt.c_str());	
+			set<pair<string,string> >::iterator it = Danhba.begin();
+			for (it; it!=Danhba.end(); it++){
+				string a = it->first;
+				ghepchu(a);
+				if (out.is_open()){
+					out << a <<" "<< it->second << " ";
+				}
+				else {
+					cout << "Luu du lieu khong thanh cong!" <<endl;
+				}
+			}	
+			out.close();
+		}
+		
 };
 
 
@@ -384,6 +371,11 @@ class Giaodien:protected Lienlac{
 					else getif();
 				}		
 				else if (n==Thoat){
+					string txt = "danhba.txt";
+		
+					thoat(txt);
+					
+					/////
 					cout << "Cam on ban da su dung ung dung danh ba dien thoai" <<endl <<"Ket thuc chuong trinh";
 					break;
 				}
