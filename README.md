@@ -16,7 +16,7 @@ Chương trình Quản lý Danh bạ Điện thoại là ứng dụng console gi
 - Thoát: Kết thúc chương trình.
 
 ## Hướng Dẫn Sử Dụng:
-- Tải file danhbaver2.exe.
+- Tải file Danhba.exe và file data là danhba.txt.
 - Chạy chương trình và chọn chức năng từ menu.
 - Thực hiện các thao tác như thêm, hiển thị, tìm kiếm, xóa, cập nhật liên lạc.
 - Lưu và nạp dữ liệu từ file khi cần.
@@ -30,6 +30,7 @@ Chương trình Quản lý Danh bạ Điện thoại là ứng dụng console gi
 22/2: Tối ưu mã nguồn, giảm độ phức tạp bằng cách sử dụng cấu trúc dữ liệu set và pair.
 23/2: Xử lý ký tự đầu vào và đầu ra, cải thiện giao diện người dùng, sửa lỗi vòng lặp for vào danhba.end().
 1/3: Chuyển sang sử dụng lập trình hướng đối tượng, tách ứng dụng và logic, xử lý lỗi đầu vào.
+10/3: Tạo sẵn danh bạ mẫu, và lưu dữ liệu khi kết thúc chương trình.
 
 ## To Do List:
 
@@ -44,7 +45,7 @@ Email: vtlong29@gmail.com
 
 ## Phiên Bản:
 
-1.0.7 (Đang phát triển)
+1.0.8 (Đang phát triển)
 
 ## Góp Ý và Báo Lỗi:
 
