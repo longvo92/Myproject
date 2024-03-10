@@ -30,7 +30,7 @@ Chương trình Quản lý Danh bạ Điện thoại là ứng dụng console gi
 - 22/2: Tối ưu mã nguồn, giảm độ phức tạp bằng cách sử dụng cấu trúc dữ liệu set và pair.
 - 23/2: Xử lý ký tự đầu vào và đầu ra, cải thiện giao diện người dùng, sửa lỗi vòng lặp for vào danhba.end().
 - 1/3: Chuyển sang sử dụng lập trình hướng đối tượng, tách ứng dụng và logic, xử lý lỗi đầu vào.
-- 10/3: Tạo sẵn danh bạ mẫu, và lưu dữ liệu khi kết thúc chương trình.
+- 10/3: Tạo sẵn danh bạ mẫu và lưu dữ liệu khi kết thúc chương trình, sửa lỗi nhập trùng tên user.
 
 ## To Do List:
 
