@@ -23,14 +23,14 @@ Chương trình Quản lý Danh bạ Điện thoại là ứng dụng console gi
 
 ## Ngày Cập Nhật:
 
-18/2: Hoàn thành khung chương trình và các chức năng cơ bản.
-19/2: Sửa lỗi danh bạ trống và chuẩn hóa ký tự.
-20/2: Sắp xếp danh bạ theo tên, thêm chức năng cập nhật nhiều số điện thoại cùng một lúc, tìm kiếm thông minh.
-21/2: Thêm chức năng nhập và xuất dữ liệu từ file.
-22/2: Tối ưu mã nguồn, giảm độ phức tạp bằng cách sử dụng cấu trúc dữ liệu set và pair.
-23/2: Xử lý ký tự đầu vào và đầu ra, cải thiện giao diện người dùng, sửa lỗi vòng lặp for vào danhba.end().
-1/3: Chuyển sang sử dụng lập trình hướng đối tượng, tách ứng dụng và logic, xử lý lỗi đầu vào.
-10/3: Tạo sẵn danh bạ mẫu, và lưu dữ liệu khi kết thúc chương trình.
+- 18/2: Hoàn thành khung chương trình và các chức năng cơ bản.
+- 19/2: Sửa lỗi danh bạ trống và chuẩn hóa ký tự.
+- 20/2: Sắp xếp danh bạ theo tên, thêm chức năng cập nhật nhiều số điện thoại cùng một lúc, tìm kiếm thông minh.
+- 21/2: Thêm chức năng nhập và xuất dữ liệu từ file.
+- 22/2: Tối ưu mã nguồn, giảm độ phức tạp bằng cách sử dụng cấu trúc dữ liệu set và pair.
+- 23/2: Xử lý ký tự đầu vào và đầu ra, cải thiện giao diện người dùng, sửa lỗi vòng lặp for vào danhba.end().
+- 1/3: Chuyển sang sử dụng lập trình hướng đối tượng, tách ứng dụng và logic, xử lý lỗi đầu vào.
+- 10/3: Tạo sẵn danh bạ mẫu, và lưu dữ liệu khi kết thúc chương trình.
 
 ## To Do List:
 
